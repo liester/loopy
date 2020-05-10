@@ -1,13 +1,11 @@
 import React from 'react';
 import './ChatBox.scss'
-import MessageBox from "../message-box/MessageBox";
-import MessageArea from "../message-area/MessageArea";
+import ChatInput from "../chat-input/ChatInput";
 
 function ChatBox() {
     return (
         <div className={"ChatBox"}>
-            <MessageArea/>
-            <MessageBox/>
+            <ChatInput/>
         </div>
     );
 }
