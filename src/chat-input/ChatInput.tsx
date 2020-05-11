@@ -1,16 +1,16 @@
 import React from 'react';
 import './ChatInput.scss'
 
-type ChatInputProps = {
-    onKeyDown(): any;
+type Props = {
+    onChange(event: any): void;
 }
 
-function ChatInput({onKeyDown}: ChatInputProps) {
+export type Ref = HTMLDivElement
+
+export default React.forwardRef<Ref, Props>((props, ref) => {
     return (
-        <div className={"ChatInput"}>
-            <input onKeyDown={onKeyDown} placeholder={"Message Someone"}/>
+        <div ref={ref} className={"ChatInput"}>
+            <input onChange={props.onChange} placeholder={"Message Someone"}/>
         </div>
     );
-}
-
-export default ChatInput;
+})
