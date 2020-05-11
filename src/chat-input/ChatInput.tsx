@@ -1,10 +1,14 @@
 import React from 'react';
 import './ChatInput.scss'
 
-function ChatInput() {
+type ChatInputProps = {
+    onKeyDown(): any;
+}
+
+function ChatInput({onKeyDown}: ChatInputProps) {
     return (
         <div className={"ChatInput"}>
-            <input placeholder={"Message Someone"}/>
+            <input onKeyDown={onKeyDown} placeholder={"Message Someone"}/>
         </div>
     );
 }

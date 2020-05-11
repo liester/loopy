@@ -5,7 +5,7 @@ import ChatInput from "../chat-input/ChatInput";
 function ChatBox() {
     return (
         <div className={"ChatBox"}>
-            <ChatInput/>
+            <ChatInput onKeyDown={()=>console.log('keydown')}/>
         </div>
     );
 }
