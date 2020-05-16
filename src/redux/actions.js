@@ -1,8 +1,9 @@
-import { ADD_MESSAGE, TOGGLE_TODO, SET_FILTER } from "./actionTypes";
+import { ADD_MESSAGE } from "./actionTypes";
+import axios from 'axios'
 
 let nextMessageId = 0;
 
-export const addMessage = message => ({
+const addMessage = message => ({
     type: ADD_MESSAGE,
     payload: {
         id: ++nextMessageId,
@@ -11,9 +12,11 @@ export const addMessage = message => ({
     }
 });
 
-export const toggleTodo = id => ({
-    type: TOGGLE_TODO,
-    payload: { id }
-});
-
-export const setFilter = filter => ({ type: SET_FILTER, payload: { filter } });
+export const sendMessage = (message) => {
+    return dispatch => {
+        axios.get("https://httpbin.org/get").then((response)=>{
+            console.log(JSON.stringify(response))
+            dispatch(addMessage(message))
+        })
+    }
+}
