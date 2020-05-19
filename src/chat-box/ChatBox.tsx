@@ -3,7 +3,6 @@ import './ChatBox.scss'
 import {connect, ConnectedProps} from "react-redux";
 import {sendMessage} from "../redux/actions";
 
-
 const mapDispatch = {
     sendMessage
 }
@@ -15,19 +14,30 @@ function ChatBox(props: PropsFromRedux) {
 
     const [currentMessage, setCurrentMessage] = useState("")
 
+
+    const handleEnterKey = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === "Enter") {
+            props.sendMessage(currentMessage)
+            setCurrentMessage("")
+        }
+    }
+
+    const handleSendClick = () => {
+        props.sendMessage(currentMessage)
+        setCurrentMessage("")
+    }
+
     return (
         <div className={"ChatBox"}>
             <div className={"ChatInput"}>
                 <input
-                    onChange={(e: ChangeEvent<HTMLInputElement>)=> setCurrentMessage(e.target.value)}
+                    onChange={(e: ChangeEvent<HTMLInputElement>) => setCurrentMessage(e.target.value)}
+                    onKeyDownCapture={handleEnterKey}
                     placeholder={"Message Someone"}
                     value={currentMessage}
                 />
             </div>
-            <button disabled={currentMessage.length === 0 } onClick={() => {
-                props.sendMessage(currentMessage)
-                setCurrentMessage("")
-            }}>SEND</button>
+            <button disabled={currentMessage.length === 0} onClick={handleSendClick}>SEND</button>
         </div>
     );
 }

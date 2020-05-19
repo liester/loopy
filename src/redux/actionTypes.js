@@ -1,3 +1,3 @@
 export const ADD_MESSAGE = "ADD_MESSAGE";
-export const TOGGLE_TODO = "TOGGLE_TODO";
-export const SET_FILTER = "SET_FILTER";
+export const GET_MESSAGES = "GET_MESSAGES";
+export const UPDATE_ALL_MESSAGES = "UPDATE_ALL_MESSAGES";
